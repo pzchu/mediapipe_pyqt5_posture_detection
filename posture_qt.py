@@ -165,3 +165,12 @@ class Ui_MainWindow(object):
         暗红：#8B008B
         玫瑰红：#FFC0CB
         '''
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
