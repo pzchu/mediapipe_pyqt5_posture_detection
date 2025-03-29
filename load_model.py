@@ -62,18 +62,6 @@ class MainApp(QMainWindow):
         self.ui.open_camera_btn.clicked.connect(self.open_camera)
         self.ui.close_camera_btn.clicked.connect(self.close_camera)
 
-    def load_gesture_recognizer(self, model_path):
-        """
-        加载手势识别任务模型
-        """
-        print(model_path)
-        base_options = python.BaseOptions(model_asset_path=model_path)
-        print('############')
-        options = vision.GestureRecognizerOptions(base_options=base_options)
-        print('############')
-        print(f"当前工作目录: {os.getcwd()}")
-        return GestureRecognizer.create_from_options(options)
-
     def open_camera(self):
         """打开摄像头"""
         self.cap = cv2.VideoCapture(0)  # 打开默认摄像头
@@ -123,9 +111,9 @@ class MainApp(QMainWindow):
         processed_image = QImage(rgb_frame.data, rgb_frame.shape[1], rgb_frame.shape[0], QImage.Format_RGB888)
 
         # 更新 QLabel 显示
-        self.ui.original_video_label.setPixmap(QPixmap.fromImage(original_image).scaled(
+        self.ui.original_video_label.setPixmap(QPixmap.fromImage(processed_image).scaled(
             self.ui.original_video_label.width(), self.ui.original_video_label.height()))
-        self.ui.processed_video_label.setPixmap(QPixmap.fromImage(processed_image).scaled(
+        self.ui.processed_video_label.setPixmap(QPixmap.fromImage(original_image).scaled(
             self.ui.processed_video_label.width(), self.ui.processed_video_label.height()))
 
         # 在状态栏显示识别到的手势
