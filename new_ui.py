@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'camera.ui'
+# Form implementation generated from reading ui file 'c:\Users\deep\gitcode\mediapipe_pyqt5_posture_detection\untitled.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -14,49 +14,39 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1200, 600)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
-        MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QtCore.QSize(1064, 600))
+        MainWindow.resize(1000, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-
-
         self.open_camera_btn = QtWidgets.QPushButton(self.centralwidget)
-        #self.open_camera_btn.setEnabled(False)
         self.open_camera_btn.setGeometry(QtCore.QRect(20, 20, 150, 46))
-        self.open_camera_btn.setStyleSheet("background-color: #4CAF50; color: white; border-radius: 5px;")
         self.open_camera_btn.setObjectName("open_camera_btn")
-
         self.close_camera_btn = QtWidgets.QPushButton(self.centralwidget)
-        self.close_camera_btn.setGeometry(QtCore.QRect(190, 20, 150, 46))
-        self.close_camera_btn.setStyleSheet("background-color: #4CAF50; color: white; border-radius: 5px;")
+        self.close_camera_btn.setEnabled(False)
+        self.close_camera_btn.setGeometry(QtCore.QRect(220, 20, 150, 46))
         self.close_camera_btn.setObjectName("close_camera_btn")
-
-
         self.original_video_label = QtWidgets.QLabel(self.centralwidget)
-        self.original_video_label.setGeometry(QtCore.QRect(20, 80, 500, 400))
-        self.original_video_label.setStyleSheet("border: 2px solid #cccccc; background-color: #f0f0f0;")
+        self.original_video_label.setGeometry(QtCore.QRect(20, 80, 400, 300))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.original_video_label.setFont(font)
         self.original_video_label.setFrameShape(QtWidgets.QFrame.Box)
         self.original_video_label.setAlignment(QtCore.Qt.AlignCenter)
         self.original_video_label.setObjectName("original_video_label")
-
         self.processed_video_label = QtWidgets.QLabel(self.centralwidget)
-        self.processed_video_label.setGeometry(QtCore.QRect(610, 80, 500, 400))
-        self.processed_video_label.setStyleSheet("border: 2px solid #cccccc; background-color: #f0f0f0;")
+        self.processed_video_label.setGeometry(QtCore.QRect(480, 80, 400, 300))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(12)
+        self.processed_video_label.setFont(font)
         self.processed_video_label.setFrameShape(QtWidgets.QFrame.Box)
         self.processed_video_label.setAlignment(QtCore.Qt.AlignCenter)
         self.processed_video_label.setObjectName("processed_video_label")
-
         MainWindow.setCentralWidget(self.centralwidget)
+        
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1200, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 37))
         self.menubar.setObjectName("menubar")
-        self.menu = QtWidgets.QMenu(self.menubar)
-        self.menu.setObjectName("menu")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -73,8 +63,6 @@ class Ui_MainWindow(object):
         self.close_camera_btn.setText(_translate("MainWindow", "关闭摄像头"))
         self.original_video_label.setText(_translate("MainWindow", "等待摄像头开启"))
         self.processed_video_label.setText(_translate("MainWindow", "等待手势识别"))
-
-
 
 
 if __name__ == "__main__":

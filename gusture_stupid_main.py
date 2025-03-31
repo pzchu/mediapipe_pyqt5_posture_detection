@@ -88,7 +88,7 @@ import mediapipe as mp
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from camera import Ui_MainWindow
+from new_ui import Ui_MainWindow
 
 
 class MainApp(QMainWindow):
@@ -113,19 +113,22 @@ class MainApp(QMainWindow):
 
     def open_camera(self):
         """打开摄像头"""
-        self.cap = cv2.VideoCapture(0)  # 打开默认摄像头
-        if not self.cap.isOpened():
-            print("Error: 无法访问摄像头。")
-            return
-        self.timer.start(30)  # 每 30 毫秒更新一次
+        self.cap = cv2.VideoCapture(0)
+        if self.cap.isOpened():
+            self.ui.close_camera_btn.setEnabled(True)
+            self.ui.open_camera_btn.setEnabled(False)
+            self.timer.start(30)
+        else:
+            print("Error: 无法访问摄像头")
 
     def close_camera(self):
         """关闭摄像头"""
         self.timer.stop()
         if self.cap:
             self.cap.release()
-        self.ui.original_video_label.setText("等待摄像头开启")
-        self.ui.processed_video_label.setText("等待手势识别")
+        self.ui.open_camera_btn.setEnabled(True)
+        self.ui.close_camera_btn.setEnabled(False)
+        self.clear_video_labels()
 
     def update_frame(self):
         """更新视频帧"""
@@ -198,6 +201,13 @@ class MainApp(QMainWindow):
             return "OK手势"  # OK gesture
         else:
             return "未知手势"  # Unknown gesture
+        
+    def clear_video_labels(self):
+        """清除视频显示区域"""
+        self.ui.original_video_label.clear()
+        self.ui.original_video_label.setText("摄像头已关闭")
+        self.ui.processed_video_label.clear()
+        self.ui.processed_video_label.setText("摄像头已关闭")
 
     def closeEvent(self, event):
         """关闭窗口事件"""

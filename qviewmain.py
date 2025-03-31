@@ -88,7 +88,7 @@ import mediapipe as mp
 from PyQt5.QtCore import QTimer
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsScene
-from qview import Ui_MainWindow
+from qview_ui import Ui_MainWindow
 
 
 class MainApp(QMainWindow):
